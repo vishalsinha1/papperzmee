@@ -1,0 +1,29 @@
+<div id="hey" class="container-1" [ngStyle]="{'width':isExpand ? '200px': '70px'}">
+    <div (click)="isExpand = !isExpand" class="app-icon">
+
+        <i class="fas fa-angle-double-right"></i>
+        <span [ngStyle]="{'display':isExpand ? 'inline-block':'none'}" style="padding:22px; color :white">Papperzmee</span>
+    </div>
+
+    <div *ngFor="let i of options; let indexMalavan = index;" (click)="navigate(i.path,indexMalavan,i.submenu && i.submenu.length > 0)">
+        <div class="single-menu">
+
+            <div style="flex: 2;"><i [class]="i.class"></i></div>
+            <div style="flex:9;padding-left: 33px;" >
+                <span [ngStyle]="{'display':isExpand ? 'inline-block':'none'}" style="color: hsl(237, 13%, 68%);font-size: 13px;">{{i.text}}</span>
+            </div>
+            <div [ngStyle]="{'display':isExpand ? 'block':'none'}" style="flex: 1;" *ngIf="i.submenu && i.submenu.length > 0" (click)="i.show = !i.show;">
+                <span><i class="fas fa-angle-right"></i></span></div>
+        </div>
+
+        <div [ngStyle]="{'display':isExpand ? 'inline-block':'none'}" style="margin-left:20px;" *ngIf="i.show">
+            <div class="single-menu sub-menu" (click)="navigate(j.path,i,false);" *ngFor="let j of i.submenu">
+                <div style="flex: 2;"><i [class]="j.class"></i></div>
+                <div style="flex:9;padding-left: 31px;"> <span style="color: #a2a3b7;font-size: 13px;">{{j.text}}</span>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>

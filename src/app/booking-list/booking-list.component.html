@@ -1,0 +1,135 @@
+<div    class="container-1">
+    <div class="title">
+        Booking Management
+    </div>
+    <div class="content">
+        <div class="add-new-user">
+            <div class="user-title">Bookings</div>
+            
+        </div>
+        <div class="search-box" style="display: flex;flex-direction: row;">
+            <div class="searchbox">
+                <input type="text" placeholder="Enter search term here" style="padding: 10px 10px 0px 0px;border: none;border-bottom: 1px solid #aeaeae;margin: 11px;">
+            </div>
+            <div class="advanced-things">
+                <button style="    background: #adcead;
+                border: none;
+                margin: 11px;
+                padding: 5px;
+                padding-left: 10px;
+                padding-right: 10px;" class="advanced-search">
+                    Advanced Search
+                </button>
+            </div>
+        </div>
+        <div>
+            <div class="table-list" >
+                <table style="width: 100%" class="table table-striped" [mfData]="data" #mf="mfDataTable"
+                    [mfRowsOnPage]="5">
+                    <thead>
+                        <tr style="border-bottom: 1px solid #b10202;
+                            padding: 10px;">
+                            <th style="width: 12%">
+                                <mfDefaultSorter by="id" style="font-family: sans-serif;">Subscriber</mfDefaultSorter>
+                            </th>
+                            <th style="width: 15%">
+                                <mfDefaultSorter style="font-family: sans-serif;" by="name">Photographer</mfDefaultSorter>
+                            </th>
+
+                            <th style="width: 8%">
+                                <mfDefaultSorter style="font-family: sans-serif;" by="phone">Location (Longitute / Latitude)</mfDefaultSorter>
+                            </th>
+                            <th style="width: 15%">
+                                <mfDefaultSorter style="font-family: sans-serif;" by="address">Date: Time </mfDefaultSorter>
+                            </th>
+
+                            <th style="width:10%">
+                                <mfDefaultSorter style="font-family: sans-serif;" by="activeSubscription">Payment Amt</mfDefaultSorter>
+                            </th>
+                            <th style="width: 10%">
+                                <mfDefaultSorter style="font-family: sans-serif;" by="email">Payment Mode</mfDefaultSorter>
+                            </th>
+
+                            <th style="width: 15%">
+                                <mfDefaultSorter style="font-family: sans-serif;" by="email">Rating</mfDefaultSorter>
+                            </th>
+
+                            <th style="width: 15%">
+                                <mfDefaultSorter style="font-family: sans-serif;" by="email">Status</mfDefaultSorter>
+                            </th>
+                            
+                            <th style="width: 8%">
+                                <mfDefaultSorter style="font-family: sans-serif;" by="email">Action</mfDefaultSorter>
+                            </th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of mf.data; let i = index;">
+                            <td>
+                                
+                                <div class="contaniner-simple">
+                                    <div>
+                                        <div style="font-size: 12px;
+                                        padding-left: 10px;"> {{item.name}} </div>
+                                        <div style="padding-left: 10px;
+                                        font-size: 12px;
+                                        opacity: .5;">  {{item.name}}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                
+                                <div class="contaniner-simple">
+                                    <div>
+                                        <div style="font-size: 12px;
+                                        padding-left: 10px;"> {{item.name}} </div>
+                                        <div style="padding-left: 10px;
+                                        font-size: 12px;
+                                        opacity: .5;">  {{item.name}}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>New York (26.7333123,76.12312454)</td>
+                            <td>5th December: 01:55 Hrs</td>
+                            <td>$ 555.00</td>
+                            <td>Successfull</td>
+                            <td>
+                                <span><i style="color: #2874f0" class="fa fa-star"></i></span>    
+                                <span><i style="color: #2874f0" class="fa fa-star"></i></span>    
+                                <span><i style="color: #2874f0" class="fa fa-star"></i></span>    
+                                <span><i style="color: #2874f0" class="fa fa-star"></i></span>    
+
+
+                            </td>
+                            <!-- <td class="text-right">
+                                <div style="    background: blueviolet;
+                                color: white;
+                                width: fit-content;
+                                padding-top: 1px;
+                                border-radius: 16px;
+                                padding-bottom: 2px;
+                                padding-left: 10px;
+                                padding-right: 10px;" [ngStyle]="{'background':item.status === 'active' ? 'green' : item.status === 'direct' ? 'red' : 'yellow'  }" >{{item.status ? item.status : 'inactive'}}</div>
+                            </td> -->
+                            <td class="text-right" [ngStyle]="{'color':item.status === 'active' ? 'green' : 'red'}"><li>{{item.status ? item.status : 'inactive'}}</li></td>
+                            <td (click)="viewdetails(item,i)">
+                                    
+                                    <i style="cursor: pointer; padding: 5px" class="fa fa-ellipsis-h"></i>
+
+                                <i style="cursor: pointer;" class="fa fa-eye"></i></td>
+
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td style="border-top: none;" colspan="9">
+                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

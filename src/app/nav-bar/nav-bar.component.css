@@ -1,0 +1,54 @@
+.container-1 {
+    width: 70px;
+    transition: 0.7s;
+    height: 100vh;
+    background-color: #1e1e2e
+}
+.container-1:hover {
+    background-color: #1e1e2e
+}
+.app-icon{
+    cursor: pointer;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    background: #1a1a27;
+    margin-bottom: 15px;
+    
+}
+
+.app-icon i {
+    padding: 28px;
+    color: white;
+}
+
+
+
+i{
+    font-size: 13px;
+    color: #434d6b;
+}
+.single-menu{
+    cursor: pointer;
+    position: -webkit-sticky;
+    position: sticky;
+    display: flex;
+    max-width: 200px;
+    min-height: 35px;
+    padding: 9px 25px;
+}
+.container-1:hover .single-menu:hover i{
+    color: #5d78ff !important;
+   
+}
+
+.container-1:hover .single-menu:hover span{
+    color: white !important;
+   background: #1a1a27;
+}
+
+.single-menu:hover {
+   
+   background: #1a1a27;
+}
+

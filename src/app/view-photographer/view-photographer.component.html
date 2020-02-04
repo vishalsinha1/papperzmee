@@ -1,0 +1,175 @@
+<div class="view-grapher">
+    <div class="header-bar">
+        <div><span *ngIf="message.allowCreate">Add</span> <span *ngIf="!message.allowCreate">View</span> Photographer</div>
+        
+        <div>
+            <button class="back-button" (click)="back()">Back</button>
+            <button class="save-button" (click)="save()"> Save </button></div>
+    </div>
+    <div style="padding: 15px;">
+        <div class="sliding-header">
+
+            <div (click)="currentTab = tabs.basic"
+                [ngClass]="{'selected':currentTab === tabs.basic,'unselected': currentTab !== tabs.basic}">
+                <i class="fa fa-user"></i> Basic Details
+            </div>
+            <div (click)="currentTab = tabs.address"
+                [ngClass]="{'selected':currentTab === tabs.address,'unselected': currentTab !== tabs.address}">
+                <i class="fa fa-address-book"></i> User address
+            </div>
+            <div (click)="currentTab = tabs.professional_details"
+                [ngClass]="{'selected':currentTab === tabs.professional_details,'unselected': currentTab !== tabs.professional_details}">
+                <i class="fa fa-camera"></i> Professional Details
+            </div>
+            
+        </div>
+    </div>
+    <div>
+        <div class="basic-d" *ngIf="currentTab === tabs.basic">
+                <div class="align-aorder"> 
+                    <div class="group-text">
+                    <img class="img-main" src="https://lh3.googleusercontent.com/-NOWffjH8DEg/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcyivdSyNoeDrUGJzsiy7jDTuUUjw.CMID/s32-c/photo.jpg">
+                </div>
+                <div class="group-text">
+                        <div style="    font-size: 12px;">Introduction</div>
+
+                        <input [ngModel]="message.briefBio" class="bref">
+                    </div>
+                <!-- <img [src]="message.profilePicture">  -->
+                </div>
+            <div class="align-aorder">
+                <div class="group-text">
+                    <div style="    font-size: 12px;">Name</div>
+                    <input [ngModel]="message.name">
+                </div>
+                <div class="group-text">
+                        <div style="    font-size: 12px;">Age</div>
+                    <input [ngModel]="message.age">
+                </div>
+                <div class="group-text">
+                        <div style="font-size: 12px;">Phone Number</div>
+                    <input [ngModel]="message.phone">
+                </div>
+            </div>
+            <div class="align-aorder"> 
+                    <div class="group-text">
+                            <div style="    font-size: 12px;">Category</div>
+                            <input [ngModel]="message.type">
+                        </div>
+                        <div class="group-text">
+                                <div style="    font-size: 12px;">Payment Method</div>
+                            <input [ngModel]="message.paymentMethod">
+                        </div>
+                        <div class="group-text">
+                                <div style="font-size: 12px;">User rating</div>
+                            <input [ngModel]="message.userRating">
+                        </div>    
+            </div>
+           
+        </div>
+        <div class="basic-d" *ngIf="currentTab === tabs.address">
+                <div class="align-aorder">
+                    <div class="group-text">
+                        <div style="    font-size: 12px;">House no.</div>
+                        <input [ngModel]="message.billingAddress.houseNo">
+                    </div>
+                    <div class="group-text">
+                            <div style="    font-size: 12px;">Street</div>
+                        <input [ngModel]="message.billingAddress.street">
+                    </div>
+                    <div class="group-text">
+                            <div style="font-size: 12px;">City</div>
+                        <input [ngModel]="message.billingAddress.city">
+                    </div>
+                </div>
+                <div class="align-aorder"> 
+                        <div class="group-text">
+                                <div style="    font-size: 12px;">Postal Code</div>
+                                <input [ngModel]="message.billingAddress.postalCode">
+                            </div>
+                            <div class="group-text">
+                                    <div style="    font-size: 12px;">State</div>
+                                <input [ngModel]="message.billingAddress.state">
+                            </div>
+                            <div class="group-text">
+                                    <div style="    font-size: 12px;">View on map</div>
+                                    <button> Click here to open map </button>
+                            </div>
+                             
+                </div>
+              
+            </div>
+            <div class="basic-d" *ngIf="currentTab === tabs.professional_details">
+                    <div class="align-aorder">
+                        <div class="group-text">
+                            <div style="    font-size: 12px;">Category</div>
+                            <input [ngModel]="message.type">
+                        </div>
+                        <div class="group-text">
+                                <div style="    font-size: 12px;">Expertise Level</div>
+                            <input [ngModel]="message.expertiseLevel">
+                        </div>
+                        <div class="group-text">
+                                <div style="font-size: 12px;">Equiment Level</div>
+                            <input [ngModel]="message.equipmentLevel">
+                        </div>
+                    </div>
+                    <div class="align-aorder"> 
+                            <div class="group-text">
+                                    <div style="    font-size: 12px;">Payment Method</div>
+                                    <input [ngModel]="message.paymentMethod">
+                                </div>
+                                <div class="group-text">
+                                        <div style="    font-size: 12px;">Service Provided</div>
+                                    <input [ngModel]="message.usersServiced">
+                                </div>
+                                <div class="group-text">
+                                        <div style="    font-size: 12px;">Rate per Hour</div>
+                                    <input [ngModel]="message.rate.ratePerHour">
+                                </div>
+                                 
+                    </div>
+                    <div style="color: black;
+                    padding-top: 22px;">Services Provided </div>
+                    <div style="padding-top: 8px !important;" class="align-aorder"> 
+                            <div class="group-text">
+                                   <i class="fa fa-check-square" (click)="message.lightingOption = !message.lightingOption" [ngStyle]="{'color':message.lightingOption ? 'green' : 'red'}" ></i> <span> Lighting Option </span> 
+                                </div>
+                                <div class="group-text">
+                                        <i class="fa fa-check-square" (click)="message.greenScreen = !message.greenScreen" [ngStyle]="{'color':message.greenScreen ? 'green' : 'red'}"></i> <span>Green Screen</span>
+                                </div>
+                                <div class="group-text">
+                                        <i class="fa fa-check-square" (click)="message.postShootRetouchEdit = !message.postShootRetouchEdit" [ngStyle]="{'color':message.postShootRetouchEdit ? 'green' : 'red'}"></i> <span> Post Shoot Retouch Edit</span>
+                                </div>
+                                 
+                    </div>
+                    <div style="padding-top: 8px !important;" class="align-aorder"> 
+                            <div class="group-text">
+                                   <i class="fa fa-check-square" (click)="message.droneAerialShoot = !message.droneAerialShoot" [ngStyle]="{'color':message.droneAerialShoot ? 'green' : 'red'}"></i> <span> Drone Aerial Shoot</span>
+                                </div>
+                                <div class="group-text">
+                                        <i class="fa fa-check-square" (click)="message.animationCreation = !message.animationCreation" [ngStyle]="{'color':message.animationCreation ? 'green' : 'red'}"></i> <span> Animation Creation </span>
+                                </div>
+                                <div class="group-text">
+                                        <i class="fa fa-check-square" (click)="message.music = !message.music" [ngStyle]="{'color':message.music ? 'green' : 'red'}"></i> <span> Music </span>
+                                </div>
+                                 
+                    </div>
+                    <div style="padding-top: 8px !important;" class="align-aorder"> 
+                            <div class="group-text">
+                                   <i class="fa fa-check-square" (click)="message.voiceOver = !message.voiceOver" [ngStyle]="{'color':message.voiceOver ? 'green' : 'red'}"></i> <span> Voice Over</span>
+                                </div>
+                                <div class="group-text">
+                                        <i class="fa fa-check-square" (click)="message.soundEffect = !message.soundEffect" [ngStyle]="{'color':message.soundEffect ? 'green' : 'red'}"></i> <span> Sound Effect</span>
+                                </div>
+                                <div class="group-text">
+                                        <i class="fa fa-check-square" (click)="message.specialEffectFilter = !message.specialEffectFilter" [ngStyle]="{'color':message.specialEffectFilter ? 'green' : 'red'}"></i> <span> Special Effect Filter </span>
+                                </div>
+                                 
+                    </div>
+                  
+                </div>
+        
+    </div>
+
+</div>
