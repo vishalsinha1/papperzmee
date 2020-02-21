@@ -1,0 +1,36 @@
+.asff{
+    padding: 10px;
+    border-bottom: 1px solid #ededed;
+}
+.asff i {
+    padding: 10px;
+    border-bottom: 1px solid #ededed;
+    color: blue;
+}
+
+input{
+    width: 175px;
+    padding: 10px;
+    border: 1px solid #aeaeae;
+    border-radius: 5px;
+
+}
+.reset{
+    padding: 10px;
+    background: white;
+    color: black;
+    border-radius: 5px;
+    margin-left: 22px;
+}
+.search {
+    padding: 10px;
+    background: blue;
+    color: white;
+    border-radius: 5px;
+}
+.single-fliter{
+    flex:1;
+}
+select{
+    width: 175px !important;
+}

@@ -1,5 +1,81 @@
 <div class="nav-header">
-    <div>
-        
+    <div style="display: flex;justify-content: flex-end;padding: 10px;">
+        <div (click)="showNotification= !showNotification" style="width: 40px;
+        height: 40px;
+        background: url(/assets/images/bg.png);
+        text-align: center;
+        cursor: pointer;
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        border-radius: 6px;">
+
+        </div>
+        <div style="padding: 10px;">
+            Hi, Admin
+        </div>
+        <div style="width: 40px;
+        height: 40px;
+        background: url(/assets/images/sample-profile.png);
+        text-align: center;
+        padding: 10px;
+        color: white;
+        font-weight: bold;
+        border-radius: 6px;">
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showNotification" class="header-container">
+    <div class="topu">
+        <div class="title-tab">
+            <div class="title-only">
+                <div class="header-one">
+                    <div style="padding:10px;color: white">
+                        User Notification
+                    </div>
+                    <div style="padding: 10px;
+                    background: #00dc00;
+                    color: white;
+                    border-radius: 5px;">
+                        23 New
+                    </div>
+                </div>
+            </div>
+            <div class="tabs">
+                <div class="sliding-header">
+
+                    <div (click)="currentTab = tabs.alerts"
+                        [ngClass]="{'selected':currentTab === tabs.alerts,'unselected': currentTab !== tabs.alerts}">
+                        Alerts
+                    </div>
+                    <div (click)="currentTab = tabs.events"
+                        [ngClass]="{'selected':currentTab === tabs.events,'unselected': currentTab !== tabs.events}">
+                        Events
+                    </div>
+                    <div (click)="currentTab = tabs.logs"
+                        [ngClass]="{'selected':currentTab === tabs.logs,'unselected': currentTab !== tabs.logs}">
+                        Logs
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="notify-list">
+            <div *ngFor="let i of data;let j = index;" class="single-item">
+                <div style="padding: 10px;flex: 1;">
+                    <i class="fa fa-calendar"></i>
+                </div>
+                <div style="padding: 10px;flex: 8;font-size: 12px;">
+                    {{i.value}}
+                    <br>
+                    <span style="color: #ededed;">{{i.time}}</span>
+                </div>
+                <div style="padding: 10px;flex: 1;">
+                    <i class="fa fa-angle-right"></i>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

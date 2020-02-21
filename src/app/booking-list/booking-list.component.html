@@ -12,7 +12,7 @@
                 <input type="text" placeholder="Enter search term here" style="padding: 10px 10px 0px 0px;border: none;border-bottom: 1px solid #aeaeae;margin: 11px;">
             </div>
             <div class="advanced-things">
-                <button style="    background: #adcead;
+                <button style="    background: #e0ffe0;
                 border: none;
                 margin: 11px;
                 padding: 5px;
@@ -95,10 +95,10 @@
                             <td>$ 555.00</td>
                             <td>Successfull</td>
                             <td>
-                                <span><i style="color: #2874f0" class="fa fa-star"></i></span>    
-                                <span><i style="color: #2874f0" class="fa fa-star"></i></span>    
-                                <span><i style="color: #2874f0" class="fa fa-star"></i></span>    
-                                <span><i style="color: #2874f0" class="fa fa-star"></i></span>    
+                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>    
+                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>    
+                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>    
+                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>    
 
 
                             </td>
@@ -112,7 +112,7 @@
                                 padding-left: 10px;
                                 padding-right: 10px;" [ngStyle]="{'background':item.status === 'active' ? 'green' : item.status === 'direct' ? 'red' : 'yellow'  }" >{{item.status ? item.status : 'inactive'}}</div>
                             </td> -->
-                            <td class="text-right" [ngStyle]="{'color':item.status === 'active' ? 'green' : 'red'}"><li>{{item.status ? item.status : 'inactive'}}</li></td>
+                            <td class="text-right" [ngStyle]="{'color':item.status === 'active' ? '#75c7f0' : 'red'}"><li>{{item.status ? item.status : 'inactive'}}</li></td>
                             <td (click)="viewdetails(item,i)">
                                     
                                     <i style="cursor: pointer; padding: 5px" class="fa fa-ellipsis-h"></i>

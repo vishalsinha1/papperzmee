@@ -3,5 +3,75 @@
     height: 64px;
     background: white;
     border-bottom: 1px solid #cecece;
+}
+.header-one{
+    height: 100px;
+    display: flex;
+    padding: 31px;
+    justify-content: center;
+}
+.header-container{
+    box-shadow: 0px 10px 10px 0 #ccc;
+    position: absolute;
+    top: 63px;
+    right: 44px;
+    height: 100%;
+    width: 303px;
+    overflow: auto;
+    background: white;
+    z-index: 100;
+}
+.title-tab {
+    height: 30%;
+    background: url(/assets/images/blur.png);
 
 }
+
+.title-only {
+    height: 60%;
+}
+
+.tabs {
+    height: 40%;
+    height: 40%;
+    margin-left: 16px;
+}
+.notify-list {
+    height: 70%;
+}
+
+.topu {
+    display:block;
+}
+.sliding-header {
+    height: 40px;
+    /* padding: 10px; */
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 0px;
+  }
+  
+  .selected {
+    color: black;
+    padding: 10px;
+    color: white;
+    border-bottom: 2px solid #00dc00;
+    padding-bottom: 0px;
+    width: fit-content;
+    text-align: center;
+  }
+  
+  .unselected {
+    color: #eaeaea;
+    width: fit-content;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .single-item {
+    display: flex;
+    border-bottom: 1px solid #eaeaea;
+    padding: 10px;
+  }

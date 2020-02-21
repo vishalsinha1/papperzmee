@@ -19,6 +19,7 @@ import { NgxCheckboxModule } from 'ngx-checkbox';
 import { BookingListComponent } from './booking-list/booking-list.component';
 import { RatingStartComponent } from './rating-start/rating-start.component';
 import { ViewBookingComponent } from './view-booking/view-booking.component';
+import { AdvanceFilterComponent } from './advance-filter/advance-filter.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import { ViewBookingComponent } from './view-booking/view-booking.component';
     BookingListComponent,
     RatingStartComponent,
     ViewBookingComponent,
+    AdvanceFilterComponent,
   ],
   imports: [
     BrowserModule,
