@@ -23,8 +23,8 @@
     "@angular/router": "~8.2.14",
     "angular-6-datatable": "^0.8.0",
     "express": "^4.17.1",
-    "ng-starrating": "^1.0.11",
     "ngx-checkbox": "0.0.8",
+    "ngx-split-button": "^0.2.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

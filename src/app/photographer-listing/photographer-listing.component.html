@@ -28,25 +28,26 @@
                         <tr style="border-bottom: 1px solid #b10202;
                             padding: 10px;">
                             <th style="width: 20%">
-                                <mfDefaultSorter by="id" style="font-family: sans-serif;">Subscriber</mfDefaultSorter>
+                                <mfDefaultSorter by="id" style="font-family: sans-serif;">Photographer</mfDefaultSorter>
                             </th>
                             <th style="width: 17%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="name">Email</mfDefaultSorter>
                             </th>
-
+                            
                             <th style="width: 17%">
-                                <mfDefaultSorter style="font-family: sans-serif;" by="phone">Payment Method
+                                <mfDefaultSorter style="font-family: sans-serif;" by="phone">Type
                                 </mfDefaultSorter>
                             </th>
                             <th style="width: 17%">
-                                <mfDefaultSorter style="font-family: sans-serif;" by="address">Billing Address
+                                <mfDefaultSorter style="font-family: sans-serif;" by="phone">Expertise
+                                </mfDefaultSorter>
+                            </th>
+                            <th style="width: 17%">
+                                <mfDefaultSorter style="font-family: sans-serif;" by="address">Rating
                                 </mfDefaultSorter>
                             </th>
 
-                            <th style="width:17%">
-                                <mfDefaultSorter style="font-family: sans-serif;" by="activeSubscription">FB
-                                </mfDefaultSorter>
-                            </th>
+                            
                             <th style="width: 17%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="email">Active</mfDefaultSorter>
                             </th>
@@ -74,8 +75,8 @@
                                 </div>
                             </td>
                             <td style="color: blue;">mlvnhari@gmail.com</td>
-                            <td>{{item.phone}}</td>
-                            <td>{{item.type}}</td>
+                            <td>Bryn Peascod</td>
+                            <td>Larking and sons</td>
                             <td class="text-right">
                                 <div style="    background: blueviolet;
                                 color: white;
@@ -85,20 +86,24 @@
                                 padding-bottom: 2px;
                                 padding-left: 10px;
                                 padding-right: 10px;"
-                                    [ngStyle]="{'background':item.status === 'active' ? 'green' : item.status === 'direct' ? 'red' : 'yellow'  }">
-                                    {{item.status ? item.status : 'inactive'}}</div>
+                                    [ngStyle]="{'background':i%2 === 0  ? '#5ad0fb' : '#3451e2'  }">
+                                    {{i%2===0 ? 'Danger' : 'Cancelled'}}</div>
                             </td>
-                            <td class="text-right" [ngStyle]="{'color':item.status === 'active' ? 'green' : 'red'}">
-                                <li>{{item.status ? item.status : 'inactive'}}</li>
-                            </td>
-                            <td (click)="viewdetails(item,i)"><i style="cursor: pointer;" class="fa fa-edit"></i></td>
+                            <td class="text-right" [ngStyle]="{'color':item.status === 'active' ? '#75c7f0' : 'red'}"><li>{{item.status ? item.status : 'inactive'}}</li></td>
+                            
+                            <td (click)="viewdetails(item,i)">
+                                    
+                                <i style="cursor: pointer; padding: 5px" class="fa fa-ellipsis-h"></i>
+
+                            <i style="cursor: pointer;" class="fa fa-pencil"></i></td>
+
 
                         </tr>
                     </tbody>
                     <tfoot>
                         <tr>
                             <td style="border-top: none;" colspan="7">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[25]"></mfBootstrapPaginator>
                             </td>
                         </tr>
                     </tfoot>

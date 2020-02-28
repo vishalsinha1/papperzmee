@@ -20,6 +20,9 @@ import { BookingListComponent } from './booking-list/booking-list.component';
 import { RatingStartComponent } from './rating-start/rating-start.component';
 import { ViewBookingComponent } from './view-booking/view-booking.component';
 import { AdvanceFilterComponent } from './advance-filter/advance-filter.component';
+
+import {NgxSplitButtonModule} from 'ngx-split-button';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +42,7 @@ import { AdvanceFilterComponent } from './advance-filter/advance-filter.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxSplitButtonModule,
     BrowserAnimationsModule,
     DataTableModule,
     HttpClientModule,

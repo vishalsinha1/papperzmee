@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,8 +9,13 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   isExpand = false;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.url.subscribe(url => {
+      console.log(url);
+    });
+  }
   options;
+
   initializeUser() {
     this.options = [{
       class: 'fa fa-dashboard',
@@ -69,8 +74,13 @@ export class NavBarComponent implements OnInit {
     if (path !== '') {
       this.router.navigateByUrl(path);
     }
+    this.options.forEach(element => {
+      element.active = false;
+    });
+    this.options[indexMalavan].active = true;
     if (allow) {
       this.options[indexMalavan].show = !this.options[indexMalavan].show;
+      this.options[indexMalavan].active = true;
       this.isExpand = true;
     }
   }

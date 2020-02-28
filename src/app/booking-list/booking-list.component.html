@@ -33,7 +33,9 @@
                                 <mfDefaultSorter by="id" style="font-family: sans-serif;">Subscriber</mfDefaultSorter>
                             </th>
                             <th style="width: 15%">
-                                <mfDefaultSorter style="font-family: sans-serif;" by="name">Photographer</mfDefaultSorter>
+                                <mfDefaultSorter style="font-family: sans-serif;" by="name">
+                                    Photographer
+                                </mfDefaultSorter>
                             </th>
 
                             <th style="width: 8%">
@@ -112,7 +114,7 @@
                                 padding-left: 10px;
                                 padding-right: 10px;" [ngStyle]="{'background':item.status === 'active' ? 'green' : item.status === 'direct' ? 'red' : 'yellow'  }" >{{item.status ? item.status : 'inactive'}}</div>
                             </td> -->
-                            <td class="text-right" [ngStyle]="{'color':item.status === 'active' ? '#75c7f0' : 'red'}"><li>{{item.status ? item.status : 'inactive'}}</li></td>
+                            <td class="text-right" [ngStyle]="{'color':item.status === 'Active' ? '#75c7f0' : 'red'}"><li>{{item.status ? item.status : 'inactive'}}</li></td>
                             <td (click)="viewdetails(item,i)">
                                     
                                     <i style="cursor: pointer; padding: 5px" class="fa fa-ellipsis-h"></i>
@@ -124,7 +126,7 @@
                     <tfoot>
                         <tr>
                             <td style="border-top: none;" colspan="9">
-                                <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+                                <mfBootstrapPaginator [rowsOnPageSet]="[25]"></mfBootstrapPaginator>
                             </td>
                         </tr>
                     </tfoot>

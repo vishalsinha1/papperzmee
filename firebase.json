@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/paparazzme-UI",
+    "public": "dist/paparazzme-UI/",
     "ignore": [
       "firebase.json",
       "**/.*",

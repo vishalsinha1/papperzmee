@@ -34,3 +34,11 @@ input{
 select{
     width: 175px !important;
 }
+.inputclass1 {
+    width: 80%;
+     /* padding-left: 10px; */
+ }
+ .selectdrop {
+    width: 100%;
+    height: 35px;
+  }

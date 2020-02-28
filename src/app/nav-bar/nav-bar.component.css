@@ -52,3 +52,13 @@ i{
    background: #1a1a27;
 }
 
+.active-menu {
+   background: #1a1a27;    
+}
+.active-menu div i {
+    color: #5d78ff !important;
+}
+.active-menu div span {
+    color: white !important;
+}
+

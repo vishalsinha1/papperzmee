@@ -12,15 +12,28 @@ export class ViewPhotographerComponent implements OnInit {
 
   currentTab: string;
   tabs = {
-    basic: 'basic',
-    address: 'address',
-    professional_details: 'professional',
-    social_network: 'social'
+    Profile: 'Profile',
+    Account: 'Account',
+    Payment: 'Payment',
+    professional_details: 'professional_details',
+    Info : 'Info',
+    Portfolio: 'Portfolio'
   }
-  constructor(private subscriber: DataServiceService, private router: Router,private photoService:PhotographerService) { }
+  bankMethod = [];
+
+
+  constructor(private subscriber: DataServiceService, private router: Router,private photoService:PhotographerService) { 
+    this.bankMethod = [
+      {label:'Bank Transfer', value: 'bank'},
+      {label:'NEFT', value: 'NEFT'},
+      {label:'GooglePay', value: 'gpay'}
+    ]
+  }
   message;
+  email = 'Harry35@gmail.com'
+  imageURL = 'https://i.pinimg.com/474x/73/90/d4/7390d4f07ea6ad287185df4ea789621f.jpg';
   ngOnInit() {
-    this.currentTab = this.tabs.basic;
+    this.currentTab = this.tabs.Profile;
     this.subscriber.currentMessage.subscribe((message: any) => {
       this.message = message;
       console.log("Message", message);

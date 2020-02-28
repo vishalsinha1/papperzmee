@@ -6,7 +6,6 @@ import { SubscriberAdminComponent } from './subscriber-admin/subscriber-admin.co
 import { MainPageComponent } from './main-page/main-page.component';
 import { ViewPhotographerComponent } from './view-photographer/view-photographer.component';
 import { BookingListComponent } from './booking-list/booking-list.component';
-import { RatingModule } from 'ng-starrating';
 import { ViewBookingComponent } from './view-booking/view-booking.component';
 
 const routes: Routes = [{
@@ -42,7 +41,7 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), RatingModule],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

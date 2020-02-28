@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhotographerService } from '../service/photographer.service';
 import { DataServiceService } from '../data-service.service';
 import { Router } from '@angular/router';
-import { StarRatingComponent } from 'ng-starrating';
+// import { StarRatingComponent } from 'ng-starrating';
 @Component({
   selector: 'app-booking-list',
   templateUrl: './booking-list.component.html',
