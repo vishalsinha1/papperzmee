@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-
+const port = process.env.PORT || 80;
 // Serve only the static files form the dist directory
 app.use(express.static('./dist/paparazzme-UI'));
 
@@ -21,4 +21,4 @@ res.sendFile(process.cwd()+'/dist/paparazzme-UI/index.html');
 });
 
 // Start the app by listening on the default Heroku port
-app.listen(env);
+app.listen(port);
