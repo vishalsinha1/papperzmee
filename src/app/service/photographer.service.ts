@@ -16,6 +16,6 @@ export class PhotographerService {
     return this.httpClient.get(this.apiUrl + url);
   }
   public addPhotoGraphers(payload) {
-    return this.httpClient.post(this.apiUrl+'/photographers',payload);
+    return this.httpClient.post(this.apiUrl + '/photographers', payload);
   }
 }

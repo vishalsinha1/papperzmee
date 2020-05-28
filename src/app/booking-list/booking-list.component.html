@@ -5,7 +5,7 @@
     <div class="content">
         <div class="add-new-user">
             <div class="user-title">Bookings</div>
-            
+
         </div>
         <div class="search-box" style="display: flex;flex-direction: row;">
             <div class="searchbox">
@@ -59,48 +59,48 @@
                             <th style="width: 15%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="email">Status</mfDefaultSorter>
                             </th>
-                            
+
                             <th style="width: 8%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="email">Action</mfDefaultSorter>
                             </th>
                         </tr>
 
                     </thead>
-                    <tbody>
+                    <tbody *ngIf="mf.data.length > 0">
                         <tr *ngFor="let item of mf.data; let i = index;">
                             <td>
-                                
+
                                 <div class="contaniner-simple">
                                     <div>
                                         <div style="font-size: 12px;
-                                        padding-left: 10px;"> {{item.name}} </div>
+                                        padding-left: 10px;"> {{item?.udetails?.length > 0 ? item?.udetails[0]?.fullname : '-'}} </div>
                                         <div style="padding-left: 10px;
                                         font-size: 12px;
-                                        opacity: .5;">  {{item.name}}</div>
+                                        opacity: .5;">  {{item?.udetails?.length > 0 ? item?.udetails[0]?.fullname : '-'}}</div>
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                
+
                                 <div class="contaniner-simple">
                                     <div>
                                         <div style="font-size: 12px;
-                                        padding-left: 10px;"> {{item.name}} </div>
+                                        padding-left: 10px;">  {{item?.udetails?.length > 0 ? item?.udetails[0]?.fullname : '-'}} </div>
                                         <div style="padding-left: 10px;
                                         font-size: 12px;
-                                        opacity: .5;">  {{item.name}}</div>
+                                        opacity: .5;">   {{item?.udetails?.length > 0 ? item?.udetails[0]?.fullname : '-'}}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>New York (26.7333123,76.12312454)</td>
+                            <td>New York ({{item?.currentlang_lat?.length > 0 ? (item?.currentlang_lat[0] + ','+item?.currentlang_lat[1]): ''}})</td>
                             <td>5th December: 01:55 Hrs</td>
-                            <td>$ 555.00</td>
+                            <td>{{item?.estimatePaymenyt}}</td>
                             <td>Successfull</td>
                             <td>
-                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>    
-                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>    
-                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>    
-                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>    
+                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>
+                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>
+                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>
+                                <span><i style="color: #75c7f0" class="fa fa-star"></i></span>
 
 
                             </td>
@@ -116,7 +116,7 @@
                             </td> -->
                             <td class="text-right" [ngStyle]="{'color':item.status === 'Active' ? '#75c7f0' : 'red'}"><li>{{item.status ? item.status : 'inactive'}}</li></td>
                             <td (click)="viewdetails(item,i)">
-                                    
+
                                     <i style="cursor: pointer; padding: 5px" class="fa fa-ellipsis-h"></i>
 
                                 <i style="cursor: pointer;" class="fa fa-eye"></i></td>

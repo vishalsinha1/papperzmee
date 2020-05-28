@@ -5,7 +5,7 @@
 
         <div>
             <button class="back-button" (click)="back()">Back</button>
-            <ngx-split-button class="save-button" name="Save Changes">
+            <ngx-split-button class="save-button" (click)="save()" name="Save Changes">
                 <ng-container *ngxDropdownItems>
                   <li><a class="ngx-dropdown-item">Save and Continue</a></li>
                   <li><a class="ngx-dropdown-item">Save and add new </a></li>
@@ -97,7 +97,7 @@
 
         <div class="basic-d  flex" *ngIf="currentTab === tabs.Profile">
             <div class="flex1">
-            
+
             </div>
             <div class="flex2">
                 <div class="flexdiv">
@@ -109,24 +109,24 @@
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> First Name</span>
-                    <input class="inputclass" [ngModel]="message.name">
+                    <input class="inputclass" [ngModel]="message?.name">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Last Name</span>
-                    <input class="inputclass" [ngModel]="message.name">
+                    <input class="inputclass" [ngModel]="message?.name">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Age </span>
                     <div class="wid80">
-                        <input class="inputclass wid100" [ngModel]="message.age">
+                        <input class="inputclass wid100" [ngModel]="message?.age">
                         <div class="temptxt"> If you want invoices addressed to a company. Leave blank to use your full name </div>
                     </div>
-                  
+
                 </div>
 
                 <div class="flexdiv">
                     <span class="wid20"> Mobile Number </span>
-                    <input class="inputclass" [ngModel]="message.phone">
+                    <input class="inputclass" [ngModel]="message?.phone">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Email address</span>
@@ -134,26 +134,26 @@
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Brief Bio</span>
-                    <input class="inputclass" [ngModel]="message.briefBio">
+                    <input class="inputclass" [ngModel]="message?.briefBio">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20">Address </span>
-                    <input class="inputclass" [ngModel]="message.billingAddress.city">
+                    <input class="inputclass" [ngModel]="message?.billingAddress?.city">
                 </div>
-            
-            
+
+
             </div>
         </div>
 
         <div class="basic-d  flex" *ngIf="currentTab === tabs.Payment">
             <div class="flex1">
-            
+
             </div>
             <div class="flex2">
                 <div class="flexdiv">
                     <span class="wid20"> Payment Method </span>
-                    <div class="inputclass1"> 
-                        <select class="selectdrop" [ngModel]="message.paymentMethod">
+                    <div class="inputclass1">
+                        <select class="selectdrop" [ngModel]="message?.paymentMethod">
                             <option value="NEFT"> Bank Transfer</option>
                             <option value="bank"> NEFT</option>
                             <option value="gpay"> Google Pay</option>
@@ -162,72 +162,72 @@
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Billing address</span>
-                    <input class="inputclass" [ngModel]="message.billingAddress.houseNo">
+                    <input class="inputclass" [ngModel]="message?.billingAddress.houseNo">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Tax Info</span>
-                    <input class="inputclass" [ngModel]="message.billingAddress.city">
+                    <input class="inputclass" [ngModel]="message?.billingAddress.city">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20">Agreement </span>
-                    <input class="inputclass" [ngModel]="message.billingAddress.city">
+                    <input class="inputclass" [ngModel]="message?.billingAddress.city">
                 </div>
-            
+
             </div>
         </div>
 
         <div class="basic-d  flex" *ngIf="currentTab === tabs.Account">
             <div class="flex1">
-            
+
             </div>
             <div class="flex2">
                 <div class="flexdiv">
                     <span class="wid21"> Total users serviced</span>
-                    <span class="inputclass1"> {{message.usersServiced }} Users</span>
+                    <span class="inputclass1"> {{message?.usersServiced }} Users</span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> User Rating</span>
-                    <span class="inputclass1"> <span class="bluec"> &#9829; &#9829; &#9829; &#9829; </span>  {{message.userRating}}</span>
+                    <span class="inputclass1"> <span class="bluec"> &#9829; &#9829; &#9829; &#9829; </span>  {{message?.userRating}}</span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> Current Lat </span>
                     <span class="inputclass1">
-                    {{  message.location.coordinates[0] }}    
+                    {{  message?.location?.coordinates[0] }}
                     </span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> Current Lng </span>
                     <span class="inputclass1">
-                        {{ message.location.coordinates[1] }}
+                        {{ message?.location?.coordinates[1] }}
                     </span>
-            
+
                 </div>
-            
+
             </div>
         </div>
 
         <div class="basic-d  flex" *ngIf="currentTab === tabs.Info">
             <div class="flex1">
-            
+
             </div>
             <div class="flex2">
                 <div class="flexdiv">
                     <span class="wid21"> Status</span>
                     <span class="inputclass1">
-                        <button type="button"  class="statusbtn"> {{message.status}} </button>
+                        <button type="button"  class="statusbtn"> {{message?.status}} </button>
                     </span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> CreatedOn</span>
-                    <span class="inputclass1"> {{message.createdAt}}</span>
+                    <span class="inputclass1"> {{message?.createdAt}}</span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> UpdatedOn </span>
                     <span class="inputclass1">
-                    {{  message.updatedAt }}    
+                    {{  message?.updatedAt }}
                     </span>
                 </div>
-            
+
             </div>
         </div>
         <!-- <div class="basic-d" *ngIf="currentTab === tabs.Account">
@@ -266,28 +266,28 @@
 
         <div class="basic-d flex" *ngIf="currentTab === tabs.professional_details">
             <div class="flex1">
-            
+
             </div>
             <div class="flex2">
                 <div class="flexdiv">
                     <span class="wid30"> Type </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message.type}}">
+                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message?.type}}">
                         <label for="vehicle1"> Photographer</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.type}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.type}}">
                         <label for="vehicle2"> Videographer</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Expertise</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message.expertiseLevel}}">
+                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message?.expertiseLevel}}">
                         <label for="vehicle1"> Mobile</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.expertiseLevel}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.expertiseLevel}}">
                         <label for="vehicle2"> amateur</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.expertiseLevel}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.expertiseLevel}}">
                         <label for="vehicle2"> Semi Pro</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.expertiseLevel}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.expertiseLevel}}">
                         <label for="vehicle2"> Pro</label>
                     </div>
                 </div>
@@ -295,127 +295,127 @@
                 <div class="flexdiv">
                     <span class="wid30"> Equipment Level </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message.equipmentLevel}}">
+                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message?.equipmentLevel}}">
                         <label for="vehicle1"> DSLR</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.equipmentLevel}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.equipmentLevel}}">
                         <label for="vehicle2"> Mobile Camera </label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.equipmentLevel}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.equipmentLevel}}">
                         <label for="vehicle2"> 360 degree camera</label>
                     </div>
                 </div>
 
                 <div class="flexdiv">
                     <span class="wid30"> Rate</span>
-                    <input class="inputclass" [ngModel]="message.rate.valuePerHour">
+                    <input class="inputclass" [ngModel]="message?.rate?.valuePerHour">
                 </div>
                 <div class="flexdiv">
                     <span class="wid30">Languages spoken </span>
-                    <input class="inputclass" [ngModel]="message.languagesSpoken">
+                    <input class="inputclass" [ngModel]="message?.languagesSpoken">
                 </div>
 
-           
+
                 <div class="flexdiv">
                     <span class="wid30"> Lighting Option</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.lightingOption}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.lightingOption}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.lightingOption}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.lightingOption}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Green Screen</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.greenScreen}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.greenScreen}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.greenScreen}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.greenScreen}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30">Post shoot retouching and editing </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.postShootRetouchEdit}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.postShootRetouchEdit}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.postShootRetouchEdit}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.postShootRetouchEdit}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> 360 degree virtual reality shoots  </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.postShootRetouchEdit}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.postShootRetouchEdit}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.postShootRetouchEdit}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.postShootRetouchEdit}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Drone aerial shoot</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.droneAerialShoot}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.droneAerialShoot}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.droneAerialShoot}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.droneAerialShoot}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Animation creation</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.animationCreation}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.animationCreation}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.animationCreation}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.animationCreation}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Music </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.music}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.music}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.music}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.music}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Voice overs </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.voiceOver}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.voiceOver}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.voiceOver}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.voiceOver}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Sound effects</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.soundEffect}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.soundEffect}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.soundEffect}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.soundEffect}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Special effects and filters</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.specialEffectFilter}}">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.specialEffectFilter}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.specialEffectFilter}}">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.specialEffectFilter}}">
                         <label for="options">No</label>
                     </div>
-                </div>            
+                </div>
             </div>
-            
+
         </div>
 
 
