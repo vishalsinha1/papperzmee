@@ -11,7 +11,7 @@ import { BookingService } from '../service/booking.service';
 })
 export class BookingListComponent implements OnInit {
   data;
-
+  isAdvancedFilter = false;
   constructor(
     private photo: PhotographerService,
     private bookingService: BookingService,

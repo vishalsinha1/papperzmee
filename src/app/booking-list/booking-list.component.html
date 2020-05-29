@@ -7,7 +7,7 @@
             <div class="user-title">Bookings</div>
 
         </div>
-        <div class="search-box" style="display: flex;flex-direction: row;">
+        <div *ngIf="!isAdvancedFilter" class="search-box" style="display: flex;flex-direction: row;">
             <div class="searchbox">
                 <input type="text" placeholder="Enter search term here" style="padding: 10px 10px 0px 0px;border: none;border-bottom: 1px solid #aeaeae;margin: 11px;">
             </div>
@@ -17,11 +17,15 @@
                 margin: 11px;
                 padding: 5px;
                 padding-left: 10px;
-                padding-right: 10px;" class="advanced-search">
+                padding-right: 10px;" class="advanced-search"
+                (click)="isAdvancedFilter = !isAdvancedFilter">
                     Advanced Search
                 </button>
             </div>
         </div>
+        <div *ngIf="isAdvancedFilter">
+          <app-advance-filter>ß</app-advance-filter>
+  </div>
         <div>
             <div class="table-list" >
                 <table style="width: 100%" class="table table-striped" [mfData]="data" #mf="mfDataTable"

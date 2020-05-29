@@ -68,13 +68,4 @@ export class ViewPhotographerComponent implements OnInit {
       console.log("Error",Error);
     });
   }
-
-  checkVal(message) {
-    debugger
-    if (message.allowCreate) { debugger
-      return false;
-    } else {
-      return true;
-    }
-  }
 }

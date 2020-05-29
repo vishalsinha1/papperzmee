@@ -1,5 +1,5 @@
 <div class="container-1">
-    
+
     <div class="content">
         <div class="add-new-user">
             <div class="user-title">Photographers</div>
@@ -33,7 +33,7 @@
                             <th style="width: 17%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="name">Email</mfDefaultSorter>
                             </th>
-                            
+
                             <th style="width: 17%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="phone">Type
                                 </mfDefaultSorter>
@@ -47,7 +47,7 @@
                                 </mfDefaultSorter>
                             </th>
 
-                            
+
                             <th style="width: 17%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="email">Active</mfDefaultSorter>
                             </th>
@@ -90,9 +90,9 @@
                                     {{i%2===0 ? 'Danger' : 'Cancelled'}}</div>
                             </td>
                             <td class="text-right" [ngStyle]="{'color':item.status === 'active' ? '#75c7f0' : 'red'}"><li>{{item.status ? item.status : 'inactive'}}</li></td>
-                            
+
                             <td (click)="viewdetails(item,i)">
-                                    
+
                                 <i style="cursor: pointer; padding: 5px" class="fa fa-ellipsis-h"></i>
 
                             <i style="cursor: pointer;" class="fa fa-pencil"></i></td>
