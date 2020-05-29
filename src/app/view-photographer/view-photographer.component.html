@@ -268,16 +268,192 @@
             <div class="flex1">
 
             </div>
-            <div class="flex2">
+            <div class="flex2" *ngIf="!message.allowCreate">
+              <div class="flexdiv">
+                  <span class="wid30"> Type </span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle1" name="vehicle1"
+                      [checked]=" !message?.allowCreate ? message?.pinfo[0]?.length > 0 ? (message?.pinfo[0]?.type).toLowerCase() === 'photographer': false : false"
+                       value="{{message?.pinfo[0]?.type}}">
+                      <label for="vehicle1"> Photographer</label>
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.type || ''}}"
+                      [checked]="!message?.allowCreate ?(message?.pinfo[0]?.type).toLowerCase() === 'videographer' :false">
+                      <label for="vehicle2"> Videographer</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Expertise</span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle1" name="vehicle1"
+                      [checked]="(message?.pinfo[0]?.expertise).toLowerCase() === 'mobile'"
+                      value="{{message?.pinfo[0]?.expertise}}">
+                      <label for="vehicle1"> Mobile</label>
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.expertise}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.expertise).toLowerCase() === 'amateur' : false">
+                      <label for="vehicle2"> amateur</label>
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.expertise}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.expertise).toLowerCase() === 'semi-pro' :false">
+                      <label for="vehicle2"> Semi Pro</label>
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.expertise}}"
+                      [checked]="!message.allowCreate ?(message?.pinfo[0]?.expertise).toLowerCase() === 'pro' : false">
+                      <label for="vehicle2"> Pro</label>
+                  </div>
+              </div>
+
+              <div class="flexdiv">
+                  <span class="wid30"> Equipment Level </span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message?.pinfo[0]?.equipmentLevel}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.equipmentLevel).toLowerCase() === 'dslr' : false">
+                      <label for="vehicle1"> DSLR</label>
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.equipmentLevel}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.equipmentLevel).toLowerCase() === 'mobile-camera' : false">
+                      <label for="vehicle2"> Mobile Camera </label>
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.equipmentLevel}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.equipmentLevel).toLowerCase() === '360-degree-camera' : false">
+                      <label for="vehicle2"> 360 degree camera</label>
+                  </div>
+              </div>
+
+              <div class="flexdiv">
+                  <span class="wid30"> Rate</span>
+                  <input class="inputclass" [ngModel]="message?.rate?.valuePerHour">
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30">Languages spoken </span>
+                  <input class="inputclass" [ngModel]="message?.languagesSpoken">
+              </div>
+
+
+              <div class="flexdiv">
+                  <span class="wid30"> Lighting Option</span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.lightingOption}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.lightingOption).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.lightingOption}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.lightingOption).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Green Screen</span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.greenScreens}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.greenScreens).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.greenScreens}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.greenScreens).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30">Post shoot retouching and editing </span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.postShoot_retouching_editing}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.postShoot_retouching_editing).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.postShoot_retouching_editing}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.postShoot_retouching_editing).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> 360 degree virtual reality shoots  </span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.virtualReality_shoot}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.virtualReality_shoot).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.virtualReality_shoot}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.virtualReality_shoot).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Drone aerial shoot</span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.droneAerial_shoot}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.droneAerial_shoot).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.droneAerial_shoot}}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.droneAerial_shoot).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Animation creation</span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.animationCreation}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.animationCreation).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.animationCreation}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.animationCreation).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Music </span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.music}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.music).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.music}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.music).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Voice overs </span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.voiceOver}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.voiceOver).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.voiceOver}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.voiceOver).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Sound effects</span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.soundEffect}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.soundEffect).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.soundEffect}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.soundEffect).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Special effects and filters</span>
+                  <div class="inputclass1">
+                      <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.specialEffects_filter}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.specialEffects_filter).toLowerCase() === 'yes' : false">
+                      <label for="options">Yes</label>
+
+                      <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.specialEffects_filter}}"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.specialEffects_filter).toLowerCase() === 'no' : false">
+                      <label for="options">No</label>
+                  </div>
+              </div>
+          </div>
+            <div class="flex2" *ngIf="message.allowCreate">
                 <div class="flexdiv">
                     <span class="wid30"> Type </span>
                     <div class="inputclass1">
                         <input class="check" type="checkbox" id="vehicle1" name="vehicle1"
-                        [checked]="(message?.pinfo[0]?.type).toLowerCase() === 'photographer'"
-                         value="{{message?.pinfo[0]?.type}}">
+                         value="{{message?.pinfo?.length ? message?.pinfo[0]?.type : ''}}">
                         <label for="vehicle1"> Photographer</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.type}}"
-                        [checked]="(message?.pinfo[0]?.type).toLowerCase() === 'videographer'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo?.length ? message?.pinfo[0]?.type : ''}}">
                         <label for="vehicle2"> Videographer</label>
                     </div>
                 </div>
@@ -285,17 +461,13 @@
                     <span class="wid30"> Expertise</span>
                     <div class="inputclass1">
                         <input class="check" type="checkbox" id="vehicle1" name="vehicle1"
-                        [checked]="(message?.pinfo[0]?.expertise).toLowerCase() === 'mobile'"
-                        value="{{message?.pinfo[0]?.expertise}}">
+                        value="{{message?.pinfo?.length ? message?.pinfo[0]?.expertise :''}}">
                         <label for="vehicle1"> Mobile</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.expertise}}"
-                        [checked]="(message?.pinfo[0]?.expertise).toLowerCase() === 'amateur'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo?.length ? message?.pinfo[0]?.expertise :''}}">
                         <label for="vehicle2"> amateur</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.expertise}}"
-                        [checked]="(message?.pinfo[0]?.expertise).toLowerCase() === 'semi-pro'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo?.length ? message?.pinfo[0]?.expertise : ''}}">
                         <label for="vehicle2"> Semi Pro</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.expertise}}"
-                        [checked]="(message?.pinfo[0]?.expertise).toLowerCase() === 'pro'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo?.length ? message?.pinfo[0]?.expertise : ''}}">
                         <label for="vehicle2"> Pro</label>
                     </div>
                 </div>
@@ -303,14 +475,11 @@
                 <div class="flexdiv">
                     <span class="wid30"> Equipment Level </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message?.pinfo[0]?.equipmentLevel}}"
-                        [checked]="(message?.pinfo[0]?.equipmentLevel).toLowerCase() === 'dslr'">
+                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message?.pinfo?.length ? message?.pinfo[0]?.equipmentLevel : ''}}">
                         <label for="vehicle1"> DSLR</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.equipmentLevel}}"
-                        [checked]="(message?.pinfo[0]?.equipmentLevel).toLowerCase() === 'mobile-camera'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo?.length ? message?.pinfo[0]?.equipmentLevel : ''}}">
                         <label for="vehicle2"> Mobile Camera </label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo[0]?.equipmentLevel}}"
-                        [checked]="(message?.pinfo[0]?.equipmentLevel).toLowerCase() === '360-degree-camera'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message?.pinfo?.length ? message?.pinfo[0]?.equipmentLevel: ''}}">
                         <label for="vehicle2"> 360 degree camera</label>
                     </div>
                 </div>
@@ -328,120 +497,100 @@
                 <div class="flexdiv">
                     <span class="wid30"> Lighting Option</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.lightingOption}}"
-                        [checked]="(message?.pinfo[0]?.lightingOption).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.lightingOption : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.lightingOption}}"
-                        [checked]="(message?.pinfo[0]?.lightingOption).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.lightingOption : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Green Screen</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.greenScreens}}"
-                        [checked]="(message?.pinfo[0]?.greenScreens).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ?message?.pinfo[0]?.greenScreens : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.greenScreens}}"
-                        [checked]="(message?.pinfo[0]?.greenScreens).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.greenScreens : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30">Post shoot retouching and editing </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.postShoot_retouching_editing}}"
-                        [checked]="(message?.pinfo[0]?.postShoot_retouching_editing).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.postShoot_retouching_editing : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.postShoot_retouching_editing}}"
-                        [checked]="(message?.pinfo[0]?.postShoot_retouching_editing).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.postShoot_retouching_editing : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> 360 degree virtual reality shoots  </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.virtualReality_shoot}}"
-                        [checked]="(message?.pinfo[0]?.virtualReality_shoot).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.virtualReality_shoot : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.virtualReality_shoot}}"
-                        [checked]="(message?.pinfo[0]?.virtualReality_shoot).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.virtualReality_shoot : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Drone aerial shoot</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.droneAerial_shoot}}"
-                        [checked]="(message?.pinfo[0]?.droneAerial_shoot).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.droneAerial_shoot : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.droneAerial_shoot}}}"
-                        [checked]="(message?.pinfo[0]?.droneAerial_shoot).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.droneAerial_shoot : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Animation creation</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.animationCreation}}"
-                        [checked]="(message?.pinfo[0]?.animationCreation).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.animationCreation : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.animationCreation}}"
-                        [checked]="(message?.pinfo[0]?.animationCreation).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.animationCreation : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Music </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.music}}"
-                        [checked]="(message?.pinfo[0]?.music).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.music : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.music}}"
-                        [checked]="(message?.pinfo[0]?.music).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.music : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Voice overs </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.voiceOver}}"
-                        [checked]="(message?.pinfo[0]?.voiceOver).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.voiceOver : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.voiceOver}}"
-                        [checked]="(message?.pinfo[0]?.voiceOver).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.voiceOver : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Sound effects</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.soundEffect}}"
-                        [checked]="(message?.pinfo[0]?.soundEffect).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.soundEffect : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.soundEffect}}"
-                        [checked]="(message?.pinfo[0]?.soundEffect).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.soundEffect : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Special effects and filters</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.specialEffects_filter}}"
-                        [checked]="(message?.pinfo[0]?.specialEffects_filter).toLowerCase() === 'yes'">
+                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.specialEffects_filter : ''}}">
                         <label for="options">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo[0]?.specialEffects_filter}}"
-                        [checked]="(message?.pinfo[0]?.specialEffects_filter).toLowerCase() === 'no'">
+                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message?.pinfo?.length ? message?.pinfo[0]?.specialEffects_filter : ''}}">
                         <label for="options">No</label>
                     </div>
                 </div>

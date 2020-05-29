@@ -22,7 +22,7 @@ export class ViewPhotographerComponent implements OnInit {
   bankMethod = [];
 
 
-  constructor(private subscriber: DataServiceService, private router: Router,private photoService:PhotographerService) { 
+  constructor(private subscriber: DataServiceService, private router: Router,private photoService:PhotographerService) {
     this.bankMethod = [
       {label:'Bank Transfer', value: 'bank'},
       {label:'NEFT', value: 'NEFT'},
@@ -67,5 +67,14 @@ export class ViewPhotographerComponent implements OnInit {
     },(Error:any)=> {
       console.log("Error",Error);
     });
+  }
+
+  checkVal(message) {
+    debugger
+    if (message.allowCreate) { debugger
+      return false;
+    } else {
+      return true;
+    }
   }
 }
