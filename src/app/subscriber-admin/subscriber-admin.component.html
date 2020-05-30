@@ -1,5 +1,5 @@
 <div class="container-1">
-    
+
     <div class="content">
         <div class="add-new-user">
             <div class="user-title">Subscribers</div>
@@ -33,7 +33,7 @@
                             <th style="width: 17%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="name">Email</mfDefaultSorter>
                             </th>
-                            
+
                             <th style="width: 17%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="phone">Gmail
                                 </mfDefaultSorter>
@@ -47,7 +47,7 @@
                                 </mfDefaultSorter>
                             </th>
 
-                            
+
                             <th style="width: 17%">
                                 <mfDefaultSorter style="font-family: sans-serif;" by="email">Active</mfDefaultSorter>
                             </th>
@@ -67,16 +67,16 @@
                                         src="https://lh3.googleusercontent.com/-NOWffjH8DEg/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcyivdSyNoeDrUGJzsiy7jDTuUUjw.CMID/s32-c/photo.jpg">
                                     <div>
                                         <div style="font-size: 12px;
-                                        padding-left: 10px;"> {{item.name}} </div>
+                                        padding-left: 10px;"> {{item?.fullname}} </div>
                                         <div style="padding-left: 10px;
                                         font-size: 12px;
-                                        opacity: .5;"> {{item.name}}</div>
+                                        opacity: .5;"> {{item?.fullname}}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td style="color: blue;">mlvnhari@dev.com</td>
-                            <td>kumaramanagalam@gmail.com</td>
-                            <td>Larking and sons</td>
+                            <td style="color: blue;">{{item?.email}}</td>
+                            <td>{{item?.email}}</td>
+                            <td>{{item?.mobileNO}}</td>
                             <td class="text-right">
                                 <div style="    background: blueviolet;
                                 color: white;
@@ -90,9 +90,9 @@
                                     {{i%2===0 ? 'Danger' : 'Cancelled'}}</div>
                             </td>
                             <td class="text-right" [ngStyle]="{'color':item.status === 'active' ? '#75c7f0' : 'red'}"><li>{{item.status ? item.status : 'inactive'}}</li></td>
-                            
+
                             <td (click)="viewdetails(item,i)">
-                                    
+
                                 <i style="cursor: pointer; padding: 5px" class="fa fa-ellipsis-h"></i>
 
                             <i style="cursor: pointer;" class="fa fa-eye"></i></td>
