@@ -15,7 +15,8 @@ export class PhotographerService {
     const url = '/v1/admin/getAll/?loginType=photographer';
     return this.httpClient.get(this.apiUrl + url);
   }
+
   public addPhotoGraphers(payload) {
-    return this.httpClient.post(this.apiUrl + '/photographers', payload);
+    return this.httpClient.post(this.apiUrl + '/authorization', payload);
   }
 }
