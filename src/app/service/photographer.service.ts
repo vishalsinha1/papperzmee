@@ -17,7 +17,7 @@ export class PhotographerService {
   }
 
   public addPhotoGraphers(payload) {
-    return this.httpClient.post(this.apiUrl + '/authorization', payload);
+    return this.httpClient.post(this.apiUrl + '/v1/authorization', payload);
   }
 
   public editPhotoGraphers(payload, id) {
