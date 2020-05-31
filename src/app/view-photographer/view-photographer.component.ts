@@ -40,6 +40,7 @@ export class ViewPhotographerComponent implements OnInit {
   fileToUpload: File = null;
   languagesSpoken;
   valuePerHour;
+  currentPgrapherId;
 
   tabs = {
     Profile: 'Profile',
@@ -83,6 +84,7 @@ export class ViewPhotographerComponent implements OnInit {
         //   valuePerHour: ''
         // }
       }
+      !message.allowCreate  && message !== 'empty' ? this.mapPgrapherData() : '';
     });
   }
   back() {
@@ -99,6 +101,7 @@ export class ViewPhotographerComponent implements OnInit {
     this.mapData();
     this.photoService.addPhotoGraphers(this.message).subscribe((res: any) => {
       console.log(res);
+      alert('Photographer have Been Saved Successfully');
     }, (Error: any) => {
       console.log('Error', Error);
     });
@@ -120,7 +123,7 @@ export class ViewPhotographerComponent implements OnInit {
     this.message.equipmentLevel = this.equipmentLevel;
     this.message.lightingOption = this.lightingOption;
     this.message.greenScreens = this.greenScreens;
-    this.message.lightingOption = this.postShoot_retouching_editing;
+    this.message.postShoot_retouching_editing = this.postShoot_retouching_editing;
     this.message.droneAerial_shoot = this.droneAerial_shoot;
     this.message.virtualReality_shoot = this.virtualReality_shoot;
     this.message.animationCreation = this.animationCreation;
@@ -132,23 +135,46 @@ export class ViewPhotographerComponent implements OnInit {
     this.message.currentLatt = this.currentLatt;
     this.message.submitType = 'Form';
     this.message.photo = this.fileToUpload;
-    this.message.languagesSpoken = this.languagesSpoken.split(',');
-    this.message.valuePerHour = this.valuePerHour;
+    this.message.languageSpoken = this.languagesSpoken ? this.languagesSpoken.split(',') : [];
+    this.message.amountOfService = this.valuePerHour;
   }
 
   editphotoGrapher() {
-    this.message;
-    // this.photoService.editPhotographer(this.message)
+    this.mapData();
+    // this.message;
+    this.photoService.editPhotoGraphers(this.message, this.currentPgrapherId)
+    .subscribe((res) => {
+      console.log(res);
+      alert('Changes Have Been Saved Successfully');
+    });
   }
 
-//   onlyOne(checkboxId,groupName) {
-//     const checkboxes = document.getElementsByName(groupName)
-//     checkboxes.forEach((item, index) => {
-//         // if (item['value'] !== checkbox.value) {
-//         //   item['checked'] = false;
-//         // }
-//         document.getElementById(groupName + (index + 1))['checked'] = false;
-//     });
-//     document.getElementById(checkboxId)['checked'] = true;
-// }
+  mapPgrapherData() {
+    if (this.message.pinfo.length > 0) {
+      this.typeOfPhotographer = this.message.pinfo[0].type || '';
+      this.expertise = this.message.pinfo[0].expertise || '';
+      this.equipmentLevel = this.message.pinfo[0].equipmentLevel || '';
+      this.lightingOption = this.message.pinfo[0].lightingOption || '';
+      this.greenScreens = this.message.pinfo[0].greenScreens || '';
+      this.postShoot_retouching_editing = this.message.pinfo[0].postShoot_retouching_editing || '';
+      this.droneAerial_shoot = this.message.pinfo[0].droneAerial_shoot || '';
+      this.virtualReality_shoot = this.message.pinfo[0].virtualReality_shoot || '';
+      this.animationCreation = this.message.pinfo[0].animationCreation || '';
+      this.music = this.message.pinfo[0].music || '';
+      this.voiceOver = this.message.pinfo[0].voiceOver || '';
+      this.soundEffect = this.message.pinfo[0].soundEffect || '';
+      this.specialEffects_filter = this.message.pinfo[0].specialEffects_filter || '';
+      this.currentLang = this.message.pinfo[0].currentLang || '';
+      this.currentLatt = this.message.pinfo[0].currentLatt || '';
+    // this.message.submitType = 'Form';
+      // this.imageURL = this.message.photo || this.imageURL;
+      this.languagesSpoken = (this.message.pinfo[0].languageSpoken).toString() ;
+      this.valuePerHour = this.message.pinfo[0].amountOfService || '';
+      this.currentPgrapherId = this.message.pinfo[0].pgrapherid;
+    }
+  }
+
+  thisFileUpload() {
+    document.getElementById('file2').click();
+}
 }

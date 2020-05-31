@@ -95,8 +95,8 @@ input {
 }
 
 .img-main {
-  height: 130px;
-  width: 130px;
+  height: 81px;
+  width: 81px;
 }
 
 .bref {
@@ -248,4 +248,15 @@ input {
 .selectdrop {
   width: 100%;
   height: 35px;
+}
+
+.filePad {
+  padding-left: 2em;
+  padding-top: 2em;
+  border: none;
+}
+
+.flx {
+display: flex;
+/* border: none; */
 }

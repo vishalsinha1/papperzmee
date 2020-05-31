@@ -19,4 +19,9 @@ export class PhotographerService {
   public addPhotoGraphers(payload) {
     return this.httpClient.post(this.apiUrl + '/authorization', payload);
   }
+
+  public editPhotoGraphers(payload, id) {
+    const url = `/v1/update/?id=${id}`;
+    return this.httpClient.put(this.apiUrl + url, payload);
+  }
 }

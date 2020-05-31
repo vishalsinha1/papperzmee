@@ -75,7 +75,7 @@
                                 </div>
                             </td>
                             <td style="color: blue;">{{item?.email}}</td>
-                            <td>{{item?.loginType}}</td>
+                            <td>{{item?.pinfo?.length > 0 ? item?.pinfo[0]?.type ? item?.pinfo[0]?.type : '-' : '-'}}</td>
                             <td>{{item?.pinfo?.length > 0 ? item?.pinfo[0]?.expertise ? item?.pinfo[0]?.expertise : '-' : '-'}}</td>
                             <td class="text-right">
                                 <div style="    background: blueviolet;
