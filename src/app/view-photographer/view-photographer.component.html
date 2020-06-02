@@ -5,7 +5,7 @@
 
         <div>
             <button class="back-button" (click)="back()">Back</button>
-            <ngx-split-button class="save-button" name="Save Changes">
+            <ngx-split-button class="save-button" (click)="save()" name="Save Changes">
                 <ng-container *ngxDropdownItems>
                   <li><a class="ngx-dropdown-item">Save and Continue</a></li>
                   <li><a class="ngx-dropdown-item">Save and add new </a></li>
@@ -97,63 +97,69 @@
 
         <div class="basic-d  flex" *ngIf="currentTab === tabs.Profile">
             <div class="flex1">
-            
+
             </div>
             <div class="flex2">
                 <div class="flexdiv">
                     <span class="wid20"> Avatar </span>
-                    <div class="inputclass1">
-                        <img class="img-main"
+                    <div class="inputclass1 flx">
+                      <!-- <label for="file">Choose File</label> -->
+                      <img class="img-main"
                         src={{imageURL}}>
+                      <input type="file"
+                             id="file"
+                             class="filePad"
+                             (change)="handleFileInput($event.target.files)">
+
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> First Name</span>
-                    <input class="inputclass" [ngModel]="message.name">
+                    <input class="inputclass" [(ngModel)]="!message?.allowCreate ? message?.fullname : firstName">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Last Name</span>
-                    <input class="inputclass" [ngModel]="message.name">
+                    <input class="inputclass" [(ngModel)]="!message?.allowCreate ? message?.fullname : lastName">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Age </span>
                     <div class="wid80">
-                        <input class="inputclass wid100" [ngModel]="message.age">
+                        <input class="inputclass wid100" [(ngModel)]="!message?.allowCreate ? message?.pinfo?.length > 0 ? message?.pinfo[0]?.age ? message?.pinfo[0]?.age : '' : '' : age">
                         <div class="temptxt"> If you want invoices addressed to a company. Leave blank to use your full name </div>
                     </div>
-                  
+
                 </div>
 
                 <div class="flexdiv">
                     <span class="wid20"> Mobile Number </span>
-                    <input class="inputclass" [ngModel]="message.phone">
+                    <input class="inputclass" [(ngModel)]="!message?.allowCreate ? message?.mobileNO : mobileNo">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Email address</span>
-                    <input class="inputclass" [ngModel]="email">
+                    <input class="inputclass" [(ngModel)]="!message?.allowCreate ? message?.email : email">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Brief Bio</span>
-                    <input class="inputclass" [ngModel]="message.briefBio">
+                    <input class="inputclass" [(ngModel)]="!message?.allowCreate ? message?.briefBio : briefBio">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20">Address </span>
-                    <input class="inputclass" [ngModel]="message.billingAddress.city">
+                    <input class="inputclass" [(ngModel)]="!message?.allowCreate ? message?.billingAddress : billingAddress">
                 </div>
-            
-            
+
+
             </div>
         </div>
 
         <div class="basic-d  flex" *ngIf="currentTab === tabs.Payment">
             <div class="flex1">
-            
+
             </div>
             <div class="flex2">
                 <div class="flexdiv">
                     <span class="wid20"> Payment Method </span>
-                    <div class="inputclass1"> 
-                        <select class="selectdrop" [ngModel]="message.paymentMethod">
+                    <div class="inputclass1">
+                        <select class="selectdrop" [ngModel]="message?.paymentMethod">
                             <option value="NEFT"> Bank Transfer</option>
                             <option value="bank"> NEFT</option>
                             <option value="gpay"> Google Pay</option>
@@ -162,72 +168,72 @@
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Billing address</span>
-                    <input class="inputclass" [ngModel]="message.billingAddress.houseNo">
+                    <input class="inputclass" [ngModel]="message?.billingAddress">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20"> Tax Info</span>
-                    <input class="inputclass" [ngModel]="message.billingAddress.city">
+                    <input class="inputclass" [ngModel]="!message?.allowCreate ? message?.taxInfo : taxInfo">
                 </div>
                 <div class="flexdiv">
                     <span class="wid20">Agreement </span>
-                    <input class="inputclass" [ngModel]="message.billingAddress.city">
+                    <input class="inputclass" [ngModel]="!message?.allowCreate ? message?.agreement : agreement">
                 </div>
-            
+
             </div>
         </div>
 
         <div class="basic-d  flex" *ngIf="currentTab === tabs.Account">
             <div class="flex1">
-            
+
             </div>
             <div class="flex2">
                 <div class="flexdiv">
                     <span class="wid21"> Total users serviced</span>
-                    <span class="inputclass1"> {{message.usersServiced }} Users</span>
+                    <span class="inputclass1"> {{message?.pinfo?.length > 0 ? message?.pinfo[0]?.totalNumber_of_users_serviced ? message?.pinfo[0]?.totalNumber_of_users_serviced : '' : ''}} Users</span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> User Rating</span>
-                    <span class="inputclass1"> <span class="bluec"> &#9829; &#9829; &#9829; &#9829; </span>  {{message.userRating}}</span>
+                    <span class="inputclass1"> <span class="bluec"> &#9829; &#9829; &#9829; &#9829; </span>  {{message?.userRating}}</span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> Current Lat </span>
                     <span class="inputclass1">
-                    {{  message.location.coordinates[0] }}    
+                    {{  message?.pinfo?.length > 0 ? message?.pinfo[0]?.currentLat_long?.length > 0 ? message?.pinfo[0]?.currentLat_long[0] : '' : '' }}
                     </span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> Current Lng </span>
                     <span class="inputclass1">
-                        {{ message.location.coordinates[1] }}
+                      {{  message?.pinfo?.length > 0 ? message?.pinfo[0]?.currentLat_long?.length > 0 ? message?.pinfo[0]?.currentLat_long[1] : '' : '' }}
                     </span>
-            
+
                 </div>
-            
+
             </div>
         </div>
 
         <div class="basic-d  flex" *ngIf="currentTab === tabs.Info">
             <div class="flex1">
-            
+
             </div>
             <div class="flex2">
                 <div class="flexdiv">
                     <span class="wid21"> Status</span>
                     <span class="inputclass1">
-                        <button type="button"  class="statusbtn"> {{message.status}} </button>
+                        <button type="button"  class="statusbtn"> {{message?.status}} </button>
                     </span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> CreatedOn</span>
-                    <span class="inputclass1"> {{message.createdAt}}</span>
+                    <span class="inputclass1"> {{message?.createdAt}}</span>
                 </div>
                 <div class="flexdiv">
                     <span class="wid21"> UpdatedOn </span>
                     <span class="inputclass1">
-                    {{  message.updatedAt }}    
+                    {{  message?.updated_at | date : 'medium' }}
                     </span>
                 </div>
-            
+
             </div>
         </div>
         <!-- <div class="basic-d" *ngIf="currentTab === tabs.Account">
@@ -266,156 +272,345 @@
 
         <div class="basic-d flex" *ngIf="currentTab === tabs.professional_details">
             <div class="flex1">
-            
+
             </div>
-            <div class="flex2">
+            <div class="flex2" *ngIf="!message.allowCreate && message?.pinfo?.length > 0 ">
+              <div class="flexdiv">
+                  <span class="wid30"> Type </span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle1" name="type"
+                      [checked]="message?.pinfo?.length > 0 ? (message?.pinfo[0]?.type).toLowerCase() === 'photographer': false"
+                       value="Photographer"
+                       [(ngModel)]="typeOfPhotographer">
+                      <label for="type"> Photographer</label>
+                      <input class="check mar2" type="radio" id="vehicle2" name="type" value="VideoGrapher"
+                      [checked]="(message?.pinfo[0]?.type).toLowerCase() === 'videographer'"
+                      [(ngModel)]="typeOfPhotographer">
+                      <label for="type"> Videographer</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Expertise</span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle1" [(ngModel)]="expertise" name="expertise"
+                      [checked]="(message?.pinfo[0]?.expertise).toLowerCase() === 'mobile'"
+                      value="mobile">
+                      <label for="expertise"> Mobile</label>
+                      <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="expertise" name="expertise" value="amateur"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.expertise).toLowerCase() === 'amateur' : false">
+                      <label for="expertise"> amateur</label>
+                      <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="expertise" name="expertise" value="semi-pro"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.expertise).toLowerCase() === 'semi-pro' :false">
+                      <label for="expertise"> Semi Pro</label>
+                      <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="expertise" name="expertise" value="pro"
+                      [checked]="!message.allowCreate ?(message?.pinfo[0]?.expertise).toLowerCase() === 'pro' : false">
+                      <label for="expertise"> Pro</label>
+                  </div>
+              </div>
+
+              <div class="flexdiv">
+                  <span class="wid30"> Equipment Level </span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle1" name="equipmentLevel" [(ngModel)]="equipmentLevel" value="DSLR"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.equipmentLevel).toLowerCase() === 'dslr' : false">
+                      <label for="equipmentLevel"> DSLR</label>
+                      <input class="check mar2" type="radio" id="vehicle2" name="equipmentLevel" [(ngModel)]="equipmentLevel" value="Mobile Camera"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.equipmentLevel).toLowerCase() === 'mobile camera' : false">
+                      <label for="equipmentLevel"> Mobile Camera </label>
+                      <input class="check mar2" type="radio" id="vehicle2" name="equipmentLevel" [(ngModel)]="equipmentLevel" value="360 degree camera"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.equipmentLevel).toLowerCase() === '360 degree camera' : false">
+                      <label for="equipmentLevel"> 360 degree camera</label>
+                  </div>
+              </div>
+
+              <div class="flexdiv">
+                <span class="wid30"> Rate</span>
+                <input class="inputclass" [(ngModel)]="valuePerHour" value={{message?.valuePerHour}}>
+            </div>
+            <div class="flexdiv">
+                <span class="wid30">Languages spoken </span>
+                <input class="inputclass" [(ngModel)]="languagesSpoken" value="{{(message?.pinfo[0]?.languageSpoken).toString()}}">
+            </div>
+
+
+              <div class="flexdiv">
+                  <span class="wid30"> Lighting Option</span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" [(ngModel)]="lightingOption" id="vehicle2" name="lightingOption" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.lightingOption).toLowerCase() === 'yes' : false">
+                      <label for="lightingOption">Yes</label>
+
+                      <input class="check mar2" type="radio" [(ngModel)]="lightingOption" id="vehicle2" name="lightingOption" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.lightingOption).toLowerCase() === 'no' : false">
+                      <label for="lightingOption">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Green Screen</span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle2" [(ngModel)]="greenScreens" name="greenScreens" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.greenScreens).toLowerCase() === 'yes' : false">
+                      <label for="greenScreens">Yes</label>
+
+                      <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="greenScreens" name="greenScreens" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.greenScreens).toLowerCase() === 'no' : false">
+                      <label for="greenScreens">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30">Post shoot retouching and editing </span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle2" name="postShoot_retouching_editing" [(ngModel)]="postShoot_retouching_editing" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.postShoot_retouching_editing).toLowerCase() === 'yes' : false">
+                      <label for="postShoot_retouching_editing">Yes</label>
+
+                      <input class="check mar2" type="radio" id="vehicle2" name="postShoot_retouching_editing" [(ngModel)]="postShoot_retouching_editing" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.postShoot_retouching_editing).toLowerCase() === 'no' : false">
+                      <label for="postShoot_retouching_editing">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> 360 degree virtual reality shoots  </span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle2" name="virtualReality_shoot" [(ngModel)]="virtualReality_shoot" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.virtualReality_shoot).toLowerCase() === 'yes' : false">
+                      <label for="virtualReality_shoot">Yes</label>
+
+                      <input class="check mar2" type="radio" id="vehicle2" name="virtualReality_shoot" [(ngModel)]="virtualReality_shoot" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.virtualReality_shoot).toLowerCase() === 'no' : false">
+                      <label for="virtualReality_shoot">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Drone aerial shoot</span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle2" name="droneAerial_shoot" [(ngModel)]="droneAerial_shoot" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.droneAerial_shoot).toLowerCase() === 'yes' : false">
+                      <label for="droneAerial_shoot">Yes</label>
+
+                      <input class="check mar2" type="radio" id="vehicle2" name="droneAerial_shoot" [(ngModel)]="droneAerial_shoot" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.droneAerial_shoot).toLowerCase() === 'no' : false">
+                      <label for="droneAerial_shoot">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Animation creation</span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle2" name="animationCreation" [(ngModel)]="animationCreation" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.animationCreation).toLowerCase() === 'yes' : false">
+                      <label for="animationCreation">Yes</label>
+
+                      <input class="check mar2" type="radio" id="vehicle2" name="animationCreation" [(ngModel)]="animationCreation" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.animationCreation).toLowerCase() === 'no' : false">
+                      <label for="animationCreation">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Music </span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle2" name="music" [(ngModel)]="music" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.music).toLowerCase() === 'yes' : false">
+                      <label for="music">Yes</label>
+
+                      <input class="check mar2" type="radio" id="vehicle2" name="music" [(ngModel)]="music" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.music).toLowerCase() === 'no' : false">
+                      <label for="music">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Voice overs </span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle2" [(ngModel)]="voiceOver" name="voiceOver" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.voiceOver).toLowerCase() === 'yes' : false">
+                      <label for="voiceOver">Yes</label>
+
+                      <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="voiceOver" name="voiceOver" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.voiceOver).toLowerCase() === 'no' : false">
+                      <label for="voiceOver">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Sound effects</span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle2" [(ngModel)]="soundEffect" name="soundEffect" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.soundEffect).toLowerCase() === 'yes' : false">
+                      <label for="soundEffect">Yes</label>
+
+                      <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="soundEffect" name="soundEffect" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.soundEffect).toLowerCase() === 'no' : false">
+                      <label for="soundEffect">No</label>
+                  </div>
+              </div>
+              <div class="flexdiv">
+                  <span class="wid30"> Special effects and filters</span>
+                  <div class="inputclass1">
+                      <input class="check" type="radio" id="vehicle2" name="specialEffects_filter" [(ngModel)]="specialEffects_filter" value="Yes"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.specialEffects_filter).toLowerCase() === 'yes' : false">
+                      <label for="specialEffects_filter">Yes</label>
+
+                      <input class="check mar2" type="radio" id="vehicle2" name="specialEffects_filter" [(ngModel)]="specialEffects_filter" value="No"
+                      [checked]="!message.allowCreate ? (message?.pinfo[0]?.specialEffects_filter).toLowerCase() === 'no' : false">
+                      <label for="specialEffects_filter">No</label>
+                  </div>
+              </div>
+          </div>
+            <div class="flex2" *ngIf="message.allowCreate">
                 <div class="flexdiv">
                     <span class="wid30"> Type </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message.type}}">
+                        <input #type1 class="check"
+                        type="radio"
+                        id="type1"
+                        name="type"
+                         value="Photographer"
+                         [(ngModel)]="typeOfPhotographer">
                         <label for="vehicle1"> Photographer</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.type}}">
+                        <input #type2 class="check mar2" type="radio"
+                         id="type2"
+                        [(ngModel)]="typeOfPhotographer" name="type"
+                         value="VideoGrapher">
                         <label for="vehicle2"> Videographer</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Expertise</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message.expertiseLevel}}">
+                        <input class="check" type="radio" id="vehicle2" [(ngModel)]="expertise" name="expertise"
+                        value="mobile">
                         <label for="vehicle1"> Mobile</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.expertiseLevel}}">
-                        <label for="vehicle2"> amateur</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.expertiseLevel}}">
-                        <label for="vehicle2"> Semi Pro</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.expertiseLevel}}">
-                        <label for="vehicle2"> Pro</label>
+                        <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="expertise" name="expertise" value="amateur">
+                        <label for="expertise"> amateur</label>
+                        <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="expertise" name="expertise" value="semi-pro">
+                        <label for="expertise"> Semi Pro</label>
+                        <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="expertise" name="expertise" value="pro">
+                        <label for="expertise"> Pro</label>
                     </div>
                 </div>
 
                 <div class="flexdiv">
                     <span class="wid30"> Equipment Level </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle1" name="vehicle1" value="{{message.equipmentLevel}}">
-                        <label for="vehicle1"> DSLR</label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.equipmentLevel}}">
-                        <label for="vehicle2"> Mobile Camera </label>
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="vehicle2" value="{{message.equipmentLevel}}">
-                        <label for="vehicle2"> 360 degree camera</label>
+                        <input class="check" type="radio" id="vehicle2" name="equipmentLevel" [(ngModel)]="equipmentLevel" value="DSLR">
+                        <label for="equipmentLevel"> DSLR </label>
+                        <input class="check mar2" type="radio" id="vehicle2" name="equipmentLevel" [(ngModel)]="equipmentLevel" value="Mobile Camera">
+                        <label for="equipmentLevel"> Mobile Camera </label>
+                        <input class="check mar2" type="radio" id="vehicle2" name="equipmentLevel" [(ngModel)]="equipmentLevel" value="360 degree camera">
+                        <label for="equipmentLevel"> 360 degree camera</label>
                     </div>
                 </div>
 
                 <div class="flexdiv">
                     <span class="wid30"> Rate</span>
-                    <input class="inputclass" [ngModel]="message.rate.valuePerHour">
+                    <input class="inputclass" [(ngModel)]="valuePerHour">
                 </div>
                 <div class="flexdiv">
                     <span class="wid30">Languages spoken </span>
-                    <input class="inputclass" [ngModel]="message.languagesSpoken">
+                    <input class="inputclass" [(ngModel)]="languagesSpoken">
                 </div>
 
-           
+
                 <div class="flexdiv">
                     <span class="wid30"> Lighting Option</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.lightingOption}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" [(ngModel)]="lightingOption" id="vehicle2" name="lightingOption" value="Yes">
+                        <label for="lightingOption">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.lightingOption}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" [(ngModel)]="lightingOption" id="vehicle2" name="lightingOption" value="No">
+                        <label for="lightingOption">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Green Screen</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.greenScreen}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" id="vehicle2" [(ngModel)]="greenScreens" name="greenScreens" value="Yes">
+                        <label for="greenScreens">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.greenScreen}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="greenScreens" name="greenScreens" value="No">
+                        <label for="greenScreens">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30">Post shoot retouching and editing </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.postShootRetouchEdit}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" id="vehicle2" name="postShoot_retouching_editing" [(ngModel)]="postShoot_retouching_editing" value="Yes">
+                        <label for="postShoot_retouching_editing">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.postShootRetouchEdit}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" id="vehicle2" name="postShoot_retouching_editing" [(ngModel)]="postShoot_retouching_editing" value="No">
+                        <label for="postShoot_retouching_editing">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> 360 degree virtual reality shoots  </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.postShootRetouchEdit}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" id="vehicle2" name="virtualReality_shoot" [(ngModel)]="virtualReality_shoot" value="Yes">
+                        <label for="virtualReality_shoot">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.postShootRetouchEdit}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" id="vehicle2" name="virtualReality_shoot" [(ngModel)]="virtualReality_shoot" value="No">
+                        <label for="virtualReality_shoot">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Drone aerial shoot</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.droneAerialShoot}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" id="vehicle2" name="droneAerial_shoot" [(ngModel)]="droneAerial_shoot" value="Yes">
+                        <label for="droneAerial_shoot">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.droneAerialShoot}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" id="vehicle2" name="droneAerial_shoot" [(ngModel)]="droneAerial_shoot" value="No">
+                        <label for="droneAerial_shoot">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Animation creation</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.animationCreation}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" id="vehicle2" name="animationCreation" [(ngModel)]="animationCreation" value="Yes">
+                        <label for="animationCreation">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.animationCreation}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" id="vehicle2" name="animationCreation" [(ngModel)]="animationCreation" value="No">
+                        <label for="animationCreation">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Music </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.music}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" id="vehicle2" name="music" [(ngModel)]="music" value="Yes">
+                        <label for="music">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.music}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" id="vehicle2" name="music" [(ngModel)]="music" value="No">
+                        <label for="music">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Voice overs </span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.voiceOver}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" id="vehicle2" [(ngModel)]="voiceOver" name="voiceOver" value="Yes">
+                        <label for="voiceOver">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.voiceOver}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="voiceOver" name="voiceOver" value="No">
+                        <label for="voiceOver">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Sound effects</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.soundEffect}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" id="vehicle2" [(ngModel)]="soundEffect" name="soundEffect" value="Yes">
+                        <label for="soundEffect">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.soundEffect}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" id="vehicle2" [(ngModel)]="soundEffect" name="soundEffect" value="No">
+                        <label for="soundEffect">No</label>
                     </div>
                 </div>
                 <div class="flexdiv">
                     <span class="wid30"> Special effects and filters</span>
                     <div class="inputclass1">
-                        <input class="check" type="checkbox" id="vehicle2" name="options" value="{{message.specialEffectFilter}}">
-                        <label for="options">Yes</label>
+                        <input class="check" type="radio" id="vehicle2" name="specialEffects_filter" [(ngModel)]="specialEffects_filter" value="Yes">
+                        <label for="specialEffects_filter">Yes</label>
 
-                        <input class="check mar2" type="checkbox" id="vehicle2" name="options" value="{{message.specialEffectFilter}}">
-                        <label for="options">No</label>
+                        <input class="check mar2" type="radio" id="vehicle2" name="specialEffects_filter" [(ngModel)]="specialEffects_filter" value="No">
+                        <label for="specialEffects_filter">No</label>
                     </div>
-                </div>            
+                </div>
             </div>
-            
+
         </div>
 
 
@@ -427,7 +622,13 @@
                 <button class="videobtn"> Videos </button>
             </div>
             <div>
-                <button class="uploadbtn"> Upload file  </button>
+              <input type="file"
+                             id="file2"
+                             class="filePad"
+                             (change)="handleFileInput($event.target.files)"
+                             style="display:none;"
+                             >
+                <button class="uploadbtn" (click)="thisFileUpload()"> Upload file  </button>
             </div>
             </div>
             <div class="imageflex">
