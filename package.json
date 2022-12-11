@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "angular-6-datatable": "^0.8.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "ngx-checkbox": "0.0.8",
     "ngx-split-button": "^0.2.3",
     "rxjs": "~6.4.0",
